@@ -1,16 +1,8 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import {
-  Facebook,
-  Instagram,
-  Linkedin,
-  Youtube,
-  Phone,
-  Mail,
-  MapPin,
-} from "lucide-react";
-import Image from "next/image";
+import Link from 'next/link';
+import { Facebook, Instagram, Linkedin, Youtube, Phone, Mail, MapPin } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -39,16 +31,11 @@ export default function Footer() {
 
         {/* Contact Info */}
         <div className="flex flex-col items-center md:items-start">
-          <h4 className="text-lg font-semibold text-gray-800 mb-3">
-            Contact Us
-          </h4>
+          <h4 className="text-lg font-semibold text-gray-800 mb-3">Contact Us</h4>
 
           <div className="flex items-center gap-2 mb-2">
             <Phone className="text-red-600 w-5 h-5" />
-            <a
-              href="tel:+923001234567"
-              className="hover:text-red-600 transition text-sm"
-            >
+            <a href="tel:+923001234567" className="hover:text-red-600 transition text-sm">
               +92 300 1234567
             </a>
           </div>
@@ -78,15 +65,13 @@ export default function Footer() {
 
         {/* Social Links */}
         <div className="flex flex-col items-center md:items-start">
-          <h4 className="text-lg font-semibold text-gray-800 mb-3">
-            Follow Us
-          </h4>
+          <h4 className="text-lg font-semibold text-gray-800 mb-3">Follow Us</h4>
           <div className="flex items-center gap-4">
             {[
-              { icon: Facebook, href: "https://facebook.com" },
-              { icon: Instagram, href: "https://instagram.com" },
-              { icon: Linkedin, href: "https://linkedin.com" },
-              { icon: Youtube, href: "https://youtube.com" },
+              { icon: Facebook, href: 'https://facebook.com' },
+              { icon: Instagram, href: 'https://instagram.com' },
+              { icon: Linkedin, href: 'https://linkedin.com' },
+              { icon: Youtube, href: 'https://youtube.com' },
             ].map(({ icon: Icon, href }, i) => (
               <Link
                 key={i}

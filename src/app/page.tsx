@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
-import Products from "@/components/product";
+import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import Products from '@/components/product';
 
-const images = ["/images/3s.webp", "/images/img1.jpeg", "/images/img3.jpeg"];
+const images = ['/images/3s.webp', '/images/img1.jpeg', '/images/img3.jpeg'];
 
 export default function Home() {
   const [current, setCurrent] = useState(0);
@@ -25,19 +25,18 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
             className="w-full lg:w-1/2 mb-12 lg:mb-0 -mt-8"
           >
             <h1 className="mb-5 text-3xl md:text-4xl font-extrabold leading-tight text-slate-800 lg:text-[42px]">
-              Power Up Your Devices with{" "}
-              <span className="text-red-600">Premium Laptop Batteries</span> &
-              Accessories
+              Power Up Your Devices with{' '}
+              <span className="text-red-600">Premium Laptop Batteries</span> & Accessories
             </h1>
 
             <p className="mb-8 max-w-[500px] text-gray-600 text-base">
-              Discover high-performance batteries, chargers, and accessories
-              built for durability, reliability, and your device’s best life.
-              Trusted by thousands of tech users nationwide.
+              Discover high-performance batteries, chargers, and accessories built for durability,
+              reliability, and your device’s best life. Trusted by thousands of tech users
+              nationwide.
             </p>
 
             <motion.p
@@ -46,8 +45,7 @@ export default function Home() {
               transition={{ delay: 0.4, duration: 0.7 }}
               className="mb-5 text-base font-medium text-slate-700"
             >
-              ⚡ Power up your laptop — call now or email us for the perfect
-              match 🎉🚀
+              ⚡ Power up your laptop — call now or email us for the perfect match 🎉🚀
             </motion.p>
 
             <motion.div
@@ -80,7 +78,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, ease: "easeOut" }}
+            transition={{ duration: 0.9, ease: 'easeOut' }}
             className="w-full px-4 lg:w-1/2 relative h-[400px] flex items-center justify-center"
           >
             <AnimatePresence>
@@ -89,7 +87,7 @@ export default function Home() {
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
-                transition={{ duration: 0.8, ease: "easeInOut" }}
+                transition={{ duration: 0.8, ease: 'easeInOut' }}
                 className="absolute inset-0"
               >
                 <Image
@@ -109,9 +107,7 @@ export default function Home() {
                 <div
                   key={index}
                   className={`w-3 h-3 rounded-full transition-all ${
-                    current === index
-                      ? "bg-red-600 scale-110"
-                      : "bg-yellow-400 opacity-60"
+                    current === index ? 'bg-red-600 scale-110' : 'bg-yellow-400 opacity-60'
                   }`}
                 />
               ))}

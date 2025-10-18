@@ -1,176 +1,176 @@
-"use client";
+'use client';
 
-import { useState, useMemo } from "react";
-import StoreSidebar from "./StoreSidebar";
-import ProductCard from "./ProductCard";
-import Pagination from "./Pagination";
+import { useState, useMemo } from 'react';
+import StoreSidebar from './StoreSidebar';
+import ProductCard from './ProductCard';
+import Pagination from './Pagination';
 
 export const productsData = [
   {
     id: 1,
-    name: "Dell Laptop Battery 65Wh",
-    category: "Batteries",
+    name: 'Dell Laptop Battery 65Wh',
+    category: 'Batteries',
     price: 9500,
-    image: "/images/main3.webp",
+    image: '/images/main3.webp',
     rating: 4.5,
   },
   {
     id: 2,
-    name: "HP Adapter 45W Type-C",
-    category: "Chargers",
+    name: 'HP Adapter 45W Type-C',
+    category: 'Chargers',
     price: 7500,
-    image: "/images/main3.webp",
+    image: '/images/main3.webp',
     rating: 4.3,
   },
   {
     id: 3,
-    name: "Lenovo Battery 48Wh",
-    category: "Batteries",
+    name: 'Lenovo Battery 48Wh',
+    category: 'Batteries',
     price: 8700,
-    image: "/images/main3.webp",
+    image: '/images/main3.webp',
     rating: 4.2,
   },
   {
     id: 4,
-    name: "Cooling Pad Pro RGB",
-    category: "Accessories",
+    name: 'Cooling Pad Pro RGB',
+    category: 'Accessories',
     price: 4500,
-    image: "/images/main3.webp",
+    image: '/images/main3.webp',
     rating: 4.7,
   },
   {
     id: 5,
-    name: "USB-C Multiport Hub",
-    category: "Accessories",
+    name: 'USB-C Multiport Hub',
+    category: 'Accessories',
     price: 5600,
-    image: "/images/main3.webp",
+    image: '/images/main3.webp',
     rating: 4.6,
   },
   {
     id: 6,
-    name: "Acer Charger 65W",
-    category: "Chargers",
+    name: 'Acer Charger 65W',
+    category: 'Chargers',
     price: 6800,
-    image: "/images/main3.webp",
+    image: '/images/main3.webp',
     rating: 4.4,
   },
   {
     id: 7,
-    name: "Asus Laptop Battery 56Wh",
-    category: "Batteries",
+    name: 'Asus Laptop Battery 56Wh',
+    category: 'Batteries',
     price: 8800,
-    image: "/images/main3.webp",
+    image: '/images/main3.webp',
     rating: 4.5,
   },
   {
     id: 8,
-    name: "MacBook Pro Charger 60W Magsafe",
-    category: "Chargers",
+    name: 'MacBook Pro Charger 60W Magsafe',
+    category: 'Chargers',
     price: 11000,
-    image: "/images/main3.webp",
+    image: '/images/main3.webp',
     rating: 4.8,
   },
   {
     id: 9,
-    name: "Laptop Stand Adjustable Aluminum",
-    category: "Accessories",
+    name: 'Laptop Stand Adjustable Aluminum',
+    category: 'Accessories',
     price: 3900,
-    image: "/images/main3.webp",
+    image: '/images/main3.webp',
     rating: 4.4,
   },
   {
     id: 10,
-    name: "HP Battery 41Wh",
-    category: "Batteries",
+    name: 'HP Battery 41Wh',
+    category: 'Batteries',
     price: 7600,
-    image: "/images/main3.webp",
+    image: '/images/main3.webp',
     rating: 4.1,
   },
   {
     id: 11,
-    name: "USB-C Fast Charger 65W GaN",
-    category: "Chargers",
+    name: 'USB-C Fast Charger 65W GaN',
+    category: 'Chargers',
     price: 9200,
-    image: "/images/main3.webp",
+    image: '/images/main3.webp',
     rating: 4.7,
   },
   {
     id: 12,
-    name: "Wireless Mouse Ergonomic Pro",
-    category: "Accessories",
+    name: 'Wireless Mouse Ergonomic Pro',
+    category: 'Accessories',
     price: 2500,
-    image: "/images/main3.webp",
+    image: '/images/main3.webp',
     rating: 4.3,
   },
   {
     id: 13,
-    name: "Dell Adapter 90W Slim",
-    category: "Chargers",
+    name: 'Dell Adapter 90W Slim',
+    category: 'Chargers',
     price: 8500,
-    image: "/images/main3.webp",
+    image: '/images/main3.webp',
     rating: 4.6,
   },
   {
     id: 14,
-    name: "Lenovo Cooling Pad Dual Fan",
-    category: "Accessories",
+    name: 'Lenovo Cooling Pad Dual Fan',
+    category: 'Accessories',
     price: 4700,
-    image: "/images/main3.webp",
+    image: '/images/main3.webp',
     rating: 4.5,
   },
   {
     id: 15,
-    name: "Acer Battery 52Wh",
-    category: "Batteries",
+    name: 'Acer Battery 52Wh',
+    category: 'Batteries',
     price: 8200,
-    image: "/images/main3.webp",
+    image: '/images/main3.webp',
     rating: 4.2,
   },
   {
     id: 16,
-    name: "Logitech Wireless Keyboard Combo",
-    category: "Accessories",
+    name: 'Logitech Wireless Keyboard Combo',
+    category: 'Accessories',
     price: 7200,
-    image: "/images/main3.webp",
+    image: '/images/main3.webp',
     rating: 4.8,
   },
   {
     id: 17,
-    name: "HP Charger 65W Type-C",
-    category: "Chargers",
+    name: 'HP Charger 65W Type-C',
+    category: 'Chargers',
     price: 7700,
-    image: "/images/main3.webp",
+    image: '/images/main3.webp',
     rating: 4.5,
   },
   {
     id: 18,
-    name: "MSI Gaming Battery 62Wh",
-    category: "Batteries",
+    name: 'MSI Gaming Battery 62Wh',
+    category: 'Batteries',
     price: 9700,
-    image: "/images/main3.webp",
+    image: '/images/main3.webp',
     rating: 4.6,
   },
   {
     id: 19,
-    name: "Laptop Cooling Pad X5 RGB",
-    category: "Accessories",
+    name: 'Laptop Cooling Pad X5 RGB',
+    category: 'Accessories',
     price: 5200,
-    image: "/images/main3.webp",
+    image: '/images/main3.webp',
     rating: 4.7,
   },
   {
     id: 20,
-    name: "Universal Charger 90W Smart Tip",
-    category: "Chargers",
+    name: 'Universal Charger 90W Smart Tip',
+    category: 'Chargers',
     price: 9800,
-    image: "/images/main3.webp",
+    image: '/images/main3.webp',
     rating: 4.5,
   },
 ];
 
 export default function Products() {
-  const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("All");
+  const [search, setSearch] = useState('');
+  const [category, setCategory] = useState('All');
   const [maxPrice, setMaxPrice] = useState(1000000);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -179,7 +179,7 @@ export default function Products() {
   // Filter logic
   const filteredProducts = useMemo(() => {
     return productsData
-      .filter((p) => (category === "All" ? true : p.category === category))
+      .filter((p) => (category === 'All' ? true : p.category === category))
       .filter((p) => p.name.toLowerCase().includes(search.toLowerCase()))
       .filter((p) => p.price <= maxPrice);
   }, [search, category, maxPrice]);
@@ -220,22 +220,16 @@ export default function Products() {
                 onChange={(e) => setMaxPrice(Number(e.target.value))}
                 className="accent-red-600 cursor-pointer"
               />
-              <span className="text-sm font-semibold text-gray-800">
-                Rs {maxPrice}
-              </span>
+              <span className="text-sm font-semibold text-gray-800">Rs {maxPrice}</span>
             </div>
           </div>
 
           {/* Product Grid */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {paginatedProducts.length > 0 ? (
-              paginatedProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))
+              paginatedProducts.map((product) => <ProductCard key={product.id} product={product} />)
             ) : (
-              <p className="text-gray-500 text-center col-span-full py-10">
-                No products found 😔
-              </p>
+              <p className="text-gray-500 text-center col-span-full py-10">No products found 😔</p>
             )}
           </div>
 

@@ -1,6 +1,6 @@
-"use client";
-import Image from "next/image";
-import { motion } from "framer-motion";
+'use client';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 export default function ProductCard({ product }: { product: any }) {
   return (
@@ -11,9 +11,9 @@ export default function ProductCard({ product }: { product: any }) {
       whileHover={{
         scale: 1.03,
         y: -5,
-        boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+        boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
       }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
+      transition={{ duration: 0.3, ease: 'easeOut' }}
       className="relative cursor-pointer bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-4 flex flex-col items-center justify-between"
     >
       <div className="w-full flex flex-col items-center">
@@ -30,12 +30,8 @@ export default function ProductCard({ product }: { product: any }) {
         >
           {product.name}
         </h4>
-        <p className="text-red-600 font-bold text-base mt-1">
-          Rs {product.price.toLocaleString()}
-        </p>
-        <span className="text-sm text-gray-500 mt-1">
-          ⭐ {product.rating} / 5
-        </span>
+        <p className="text-red-600 font-bold text-base mt-1">Rs {product.price.toLocaleString()}</p>
+        <span className="text-sm text-gray-500 mt-1">⭐ {product.rating} / 5</span>
       </div>
 
       <button className="mt-4 w-full cursor-pointer rounded-md bg-red-600 text-white py-2 text-sm font-semibold hover:bg-red-700 transition  ">
