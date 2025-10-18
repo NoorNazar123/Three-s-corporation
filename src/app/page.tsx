@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <>
-      <section className="pt-30 overflow-hidden">
+      <section className="overflow-hidden">
         <div className="container mx-auto px-6 flex flex-wrap items-center">
           {/* Text Section */}
           <motion.div
