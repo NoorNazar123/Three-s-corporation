@@ -22,7 +22,7 @@ export default function Header() {
         isSticky ? 'bg-white/80 backdrop-blur-md shadow-md' : 'bg-transparent'
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between px-6 py-4">
+      <div className="container mx-auto flex items-center justify-between px-6">
         {/* Logo */}
         <Link
           href="/"
