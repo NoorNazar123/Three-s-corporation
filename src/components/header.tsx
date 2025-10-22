@@ -109,18 +109,37 @@ export default function Header() {
             </button>
           </div>
 
-          <nav className="flex flex-col space-y-6 p-6 text-gray-700">
-            {['Home', 'Products', 'Contact'].map((item) => (
-              <Link
-                key={item}
-                href={`/${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`}
-                className=" text-black font-semibold text-2xl transition-all duration-300 hover:text-red-600 hover:translate-x-1"
-                onClick={() => setMenuOpen(false)}
-              >
-                {item}
-              </Link>
-            ))}
-          </nav>
+          {/* Mobile Nav */}
+<nav className="flex flex-col space-y-6 p-6 text-gray-700 md:hidden">
+  {['Home', 'Products', 'Contact'].map((item) => {
+    const path =
+      item === 'Home'
+        ? '/'
+        : item === 'Products'
+          ? '/#product' // scroll link
+          : `/${item.toLowerCase()}`;
+
+    // ✅ Active only if actual route matches
+    const isActive =
+      (item === 'Home' && pathname === '/') ||
+      (item === 'Contact' && pathname === '/contact');
+
+    return (
+      <Link
+        key={item}
+        href={path}
+        scroll={true}
+        className={`relative font-semibold text-2xl transition-all duration-300 hover:text-red-600 hover:translate-x-1 ${
+          isActive ? 'text-red-600' : 'text-gray-700'
+        }`}
+        onClick={() => setMenuOpen(false)}
+      >
+        {item}
+      </Link>
+    );
+  })}
+</nav>
+
         </div>
       </div>
     </header>
