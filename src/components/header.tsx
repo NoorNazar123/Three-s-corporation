@@ -4,10 +4,13 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
+
+  const pathname = usePathname(); // ✅ get current path
 
   // Sticky navbar effect
   useEffect(() => {
@@ -15,6 +18,8 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const navItems = ['Home', 'Products', 'Contact'];
 
   return (
     <header
@@ -40,15 +45,34 @@ export default function Header() {
 
         {/* Desktop Nav */}
         <nav className="hidden space-x-8 md:flex">
-          {['Home', 'Products', 'Contact'].map((item) => (
-            <Link
-              key={item}
-              href={`/${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`}
-              className="relative text-gray-700 font-medium text-xl  transition-all duration-300 hover:text-red-600 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300 hover:after:w-full"
-            >
-              {item}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const path =
+              item === 'Home'
+                ? '/'
+                : item === 'Products'
+                  ? '/#product' // scroll link
+                  : `/${item.toLowerCase()}`;
+
+            // ✅ Active only if actual route matches
+            const isActive =
+              (item === 'Home' && pathname === '/') ||
+              (item === 'Contact' && pathname === '/contact');
+
+            return (
+              <Link
+                key={item}
+                href={path}
+                scroll={true}
+                className={`relative font-medium text-xl transition-all duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-red-600 after:transition-all after:duration-300 ${
+                  isActive
+                    ? 'text-red-600 after:w-full'
+                    : 'text-gray-700 hover:text-red-600 after:w-0 hover:after:w-full'
+                }`}
+              >
+                {item}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Mobile Menu Button */}

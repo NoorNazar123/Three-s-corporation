@@ -9,7 +9,7 @@ export async function POST(request: Request) {
 
     for (const [key, value] of formData.entries()) {
       if (value instanceof File) {
-        if (value.size > 0) { // attach only if file is selected
+        if (value.size > 0) {
           const buffer = Buffer.from(await value.arrayBuffer());
           attachments.push({ filename: value.name, content: buffer });
         }

@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react';
 import StoreSidebar from './StoreSidebar';
 import ProductCard from './ProductCard';
 import Pagination from './Pagination';
+import { productsData } from '@/lib/peoductData';
 
 // export const productsData = [
 //   {
@@ -168,108 +169,7 @@ import Pagination from './Pagination';
 //   },
 // ];
 
-export const productsData = [
-  {
-    id: 1,
-    name: 'Dell Laptop Battery 65Wh',
-    category: 'Batteries',
-    price: 9500,
-    image: '/images/main3.webp',
-    images: ['/images/main3.webp', '/images/main3.webp', '/images/main3.webp'],
-    description: 'Reliable 65Wh battery compatible with Dell laptops for long-lasting performance.',
-    rating: 4.5,
-  },
-  {
-    id: 2,
-    name: 'HP Adapter 45W Type-C',
-    category: 'Chargers',
-    price: 7500,
-    image: '/images/main3.webp',
-    images: ['/images/main3.webp', '/images/main3.webp', '/images/main3.webp'],
-    description: 'Compact 45W Type-C adapter suitable for HP laptops with fast charging support.',
-    rating: 4.3,
-  },
-  {
-    id: 3,
-    name: 'Lenovo Battery 48Wh',
-    category: 'Batteries',
-    price: 8700,
-    image: '/images/main3.webp',
-    images: ['/images/main3.webp', '/images/main3.webp', '/images/main3.webp'],
-    description: 'Original 48Wh Lenovo battery providing stable backup and performance.',
-    rating: 4.2,
-  },
-  {
-    id: 4,
-    name: 'Cooling Pad Pro RGB',
-    category: 'Accessories',
-    price: 4500,
-    image: '/images/main3.webp',
-    images: ['/images/main3.webp', '/images/main3.webp', '/images/main3.webp'],
-    description: 'RGB cooling pad with dual fans to keep your laptop cool during heavy use.',
-    rating: 4.7,
-  },
-  {
-    id: 5,
-    name: 'USB-C Multiport Hub',
-    category: 'Accessories',
-    price: 5600,
-    image: '/images/main3.webp',
-    images: ['/images/main3.webp', '/images/main3.webp', '/images/main3.webp'],
-    description: 'Expand your laptop’s connectivity with this high-speed USB-C multiport hub.',
-    rating: 4.6,
-  },
-  {
-    id: 6,
-    name: 'Acer Charger 65W',
-    category: 'Chargers',
-    price: 6800,
-    image: '/images/main3.webp',
-    images: ['/images/main3.webp', '/images/main3.webp', '/images/main3.webp'],
-    description: '65W Acer original charger for stable power delivery and battery health.',
-    rating: 4.4,
-  },
-  {
-    id: 7,
-    name: 'Asus Laptop Battery 56Wh',
-    category: 'Batteries',
-    price: 8800,
-    image: '/images/main3.webp',
-    images: ['/images/main3.webp', '/images/main3.webp', '/images/main3.webp'],
-    description: 'High-capacity Asus 56Wh battery for extended runtime and durability.',
-    rating: 4.5,
-  },
-  {
-    id: 8,
-    name: 'MacBook Pro Charger 60W Magsafe',
-    category: 'Chargers',
-    price: 11000,
-    image: '/images/main3.webp',
-    images: ['/images/main3.webp', '/images/main3.webp', '/images/main3.webp'],
-    description: 'Genuine Apple MagSafe 60W charger with magnetic connector for MacBook Pro.',
-    rating: 4.8,
-  },
-  {
-    id: 9,
-    name: 'Laptop Stand Adjustable Aluminum',
-    category: 'Accessories',
-    price: 3900,
-    image: '/images/main3.webp',
-    images: ['/images/main3.webp', '/images/main3.webp', '/images/main3.webp'],
-    description: 'Ergonomic and foldable aluminum laptop stand with height adjustability.',
-    rating: 4.4,
-  },
-  {
-    id: 10,
-    name: 'HP Battery 41Wh',
-    category: 'Batteries',
-    price: 7600,
-    image: '/images/main3.webp',
-    images: ['/images/main3.webp', '/images/main3.webp', '/images/main3.webp'],
-    description: 'Durable 41Wh battery built for HP laptops for extended performance.',
-    rating: 4.1,
-  },
-];
+
 
 export default function Products() {
   const [search, setSearch] = useState('');
@@ -294,7 +194,7 @@ export default function Products() {
   );
 
   return (
-    <section className="container mx-auto mt-20 px-6">
+    <section id='product' className="container mx-auto mt-20 px-6">
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Sidebar */}
         <div className="w-full lg:w-1/4">
@@ -328,7 +228,7 @@ export default function Products() {
           </div>
 
           {/* Product Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div  className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {paginatedProducts.length > 0 ? (
               paginatedProducts.map((product) => <ProductCard key={product.id} product={product} />)
             ) : (
