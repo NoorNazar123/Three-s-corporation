@@ -37,7 +37,7 @@ export const metadata: Metadata = {
       "Premium laptop accessories — batteries, chargers, and more for every brand.",
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/icon.png",
   },
 };
 
