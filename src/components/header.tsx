@@ -9,6 +9,7 @@ import { usePathname } from 'next/navigation';
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false); // ✅ added
 
   const pathname = usePathname(); // ✅ get current path
 
@@ -19,7 +20,13 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = ['Home', 'Products', 'Contact'];
+  // ✅ Check admin on load
+  useEffect(() => {
+    const adminFlag = localStorage.getItem('isAdmin');
+    if (adminFlag === 'true') setIsAdmin(true);
+  }, []);
+
+  const navItems = ['Home', 'Products', 'Contact', 'Dashboard'];
 
   return (
     <header
@@ -34,9 +41,9 @@ export default function Header() {
           className="font-bold flex flex-col leading-[30px] text-center tracking-wide text-red-700 hover:scale-105 transition-transform duration-300"
         >
           <Image
-            src="/images/logo.png" // replace with your actual logo path
+            src="/images/logo.png"
             alt="3S Corporation Logo"
-            width={1200} // adjust as needed
+            width={1200}
             height={1200}
             className="object-contain w-[110px] h-auto"
             priority
@@ -45,34 +52,37 @@ export default function Header() {
 
         {/* Desktop Nav */}
         <nav className="hidden space-x-8 md:flex">
-          {navItems.map((item) => {
-            const path =
-              item === 'Home'
-                ? '/'
-                : item === 'Products'
-                  ? '/#product' // scroll link
-                  : `/${item.toLowerCase()}`;
+          {navItems
+            .filter((item) => item !== 'Dashboard' || isAdmin)
+            // only include 'dashboard' if isAdmin is true
+            .map((item) => {
+              const path =
+                item === 'Home'
+                  ? '/'
+                  : item === 'Products'
+                    ? '/#product'
+                    : `/${item.toLowerCase()}`;
 
-            // ✅ Active only if actual route matches
-            const isActive =
-              (item === 'Home' && pathname === '/') ||
-              (item === 'Contact' && pathname === '/contact');
+              const isActive =
+                (item === 'Home' && pathname === '/') ||
+                (item === 'Contact' && pathname === '/contact') ||
+                (item === 'Dashboard' && pathname === '/dashboard');
 
-            return (
-              <Link
-                key={item}
-                href={path}
-                scroll={true}
-                className={`relative font-medium text-xl transition-all duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-red-600 after:transition-all after:duration-300 ${
-                  isActive
-                    ? 'text-red-600 after:w-full'
-                    : 'text-gray-700 hover:text-red-600 after:w-0 hover:after:w-full'
-                }`}
-              >
-                {item}
-              </Link>
-            );
-          })}
+              return (
+                <Link
+                  key={item}
+                  href={path}
+                  scroll={true}
+                  className={`relative font-medium text-xl transition-all duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-red-600 after:transition-all after:duration-300 ${
+                    isActive
+                      ? 'text-red-600 after:w-full'
+                      : 'text-gray-700 hover:text-red-600 after:w-0 hover:after:w-full'
+                  }`}
+                >
+                  {item}
+                </Link>
+              );
+            })}
         </nav>
 
         {/* Mobile Menu Button */}
@@ -99,7 +109,19 @@ export default function Header() {
           }`}
         >
           <div className="flex items-center justify-between px-6 py-4 border-b">
-            <span className="text-lg font-semibold text-gray-800">3S Corporation</span>
+                <Link
+          href="/"
+          className="font-bold flex flex-col leading-[30px] text-center tracking-wide text-red-700 hover:scale-105 transition-transform duration-300"
+        >
+          <Image
+            src="/images/logo.png"
+            alt="3S Corporation Logo"
+            width={1200}
+            height={1200}
+            className="object-contain w-[110px] h-auto"
+            priority
+          />
+        </Link>
             <button
               onClick={() => setMenuOpen(false)}
               className="p-2 rounded-md hover:bg-gray-100 transition"
@@ -109,17 +131,39 @@ export default function Header() {
             </button>
           </div>
 
-          <nav className="flex flex-col space-y-6 p-6 text-gray-700">
-            {['Home', 'Products', 'Contact'].map((item) => (
-              <Link
-                key={item}
-                href={`/${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`}
-                className=" text-black font-semibold text-2xl transition-all duration-300 hover:text-red-600 hover:translate-x-1"
-                onClick={() => setMenuOpen(false)}
-              >
-                {item}
-              </Link>
-            ))}
+          {/* ✅ Mobile Nav */}
+          <nav className="flex flex-col space-y-6 p-6 text-gray-700 md:hidden">
+            {navItems
+              .filter((item) => item !== 'Dashboard' || isAdmin)
+              .map((item) => {
+                const path =
+                  item === 'Home'
+                    ? '/'
+                    : item === 'Products'
+                      ? '/#product'
+                      : `/${item.toLowerCase()}`;
+
+                const isActive =
+                  (item === 'Home' && pathname === '/') ||
+                  (item === 'Contact' && pathname === '/contact') ||
+                  (item === 'Dashboard' && pathname === '/dashboard');
+
+                return (
+                  <Link
+                    key={item}
+                    href={path}
+                    scroll={true}
+                    onClick={() => setMenuOpen(false)}
+                    className={`relative font-semibold text-2xl transition-all duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-red-600 after:transition-all after:duration-300 ${
+                      isActive
+                        ? 'text-red-600 after:w-full'
+                        : 'text-gray-700 hover:text-red-600 after:w-0 hover:after:w-full'
+                    }`}
+                  >
+                    {item}
+                  </Link>
+                );
+              })}
           </nav>
         </div>
       </div>
