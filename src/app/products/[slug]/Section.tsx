@@ -40,7 +40,7 @@ const Section: React.FC<Product> = ({ product }: any) => {
       {/* Product Card Container - 50/50 split */}
       <div className="relative z-10 flex flex-col lg:flex-row overflow-hidden">
         {/* Left: Image Section (50%) */}
-        <div className="lg:w-1/2 w-full flex flex-col items-center justify-center px-8">
+        <div className="lg:w-1/2 w-full flex flex-col items-center px-8">
           <div
             className={`w-full max-w-[500px] h-[300px] rounded-xl overflow-hidden flex justify-center items-center relative border border-red-600 ${
               isZoomed ? 'cursor-crosshair' : ''
@@ -76,7 +76,7 @@ const Section: React.FC<Product> = ({ product }: any) => {
         </div>
 
         {/* Right: Product Details (50%) */}
-        <div className="lg:w-1/2 w-full p-8 flex flex-col justify-center">
+        <div className="lg:w-1/2 w-full px-8  mt-8 lg:mt-0 flex flex-col">
           <h1 className="text-4xl font-bold mb-4">{product.name}</h1>
           <p className="text-lg mb-6 leading-relaxed">
             {product.description ||
