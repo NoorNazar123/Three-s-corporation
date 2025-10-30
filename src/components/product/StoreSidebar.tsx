@@ -11,7 +11,7 @@ export default function StoreSidebar({ selected, setSelected }: SidebarProps) {
   'External Hard Drives',
   'Adapters',
   'Storage',
-  'RAMs',
+  'RAMS',
   'Laptop Keyboards',
   'Screens',
   'Other Parts'
