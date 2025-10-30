@@ -11,6 +11,7 @@ interface Product {
   image: string;
   images: string[];
   price: number;
+  discount: number;
   description: string;
   createdAt?: string;
   docId?: string;
@@ -56,6 +57,7 @@ async function getProductBySlug(slug: string): Promise<Product | null> {
           : "",
       images: cleanImages,
       price: data.price ?? 0,
+      discount: data.discount ?? 0,
       description: data.description ?? "No description available.",
       createdAt,
       docId: docSnap.id,

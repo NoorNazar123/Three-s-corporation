@@ -33,6 +33,8 @@ const Section: React.FC<Product> = ({ product }: any) => {
     setPosition({ x, y });
   };
 
+  console.log("test123", product.discount, product.price)
+
   return (
     <div className="text-gray-900 min-h-screen">
       {/* Product Card Container - 50/50 split */}
@@ -82,9 +84,9 @@ const Section: React.FC<Product> = ({ product }: any) => {
           </p>
 
           <div className="flex items-center gap-4 mb-6">
-            <span className="text-2xl text-red-500 line-through">{actualPrice} Rs</span>
+            <span className="text-2xl text-red-500 line-through">{product.price? product.price : actualPrice} Rs</span>
             <span className="text-3xl">|</span>
-            <span className="text-2xl font-semibold text-green-600">{discountedPrice} Rs</span>
+            <span className="text-2xl font-semibold text-green-600">{product.discount ? product.discount : discountedPrice} Rs</span>
           </div>
 
           <p className="text-lg mb-4">

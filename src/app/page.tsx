@@ -58,7 +58,7 @@ export default function Home() {
               <motion.a
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                href="tel:+923001234567"
+                href="tel:+923453286167"
                 className="flex items-center justify-center gap-2 rounded-md bg-red-600 px-6 py-3 text-white font-semibold text-xs md:text-base shadow-md transition hover:bg-red-700"
               >
                 Talk to a Power Expert
@@ -67,7 +67,7 @@ export default function Home() {
               <motion.a
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                href="mailto:support@3scorporation.com"
+                href="mailto:3scorpor@gmail.com"
                 className="flex items-center justify-center gap-2 rounded-md border border-red-600 px-6 py-3 text-red-600 font-semibold text-xs md:text-base transition hover:bg-red-600 hover:text-white shadow-sm"
               >
                 Get the Best Quote

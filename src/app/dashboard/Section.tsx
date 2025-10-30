@@ -13,6 +13,7 @@ const Section: React.FC = () => {
     category: "",
     rating: "",
     price: "",
+    discount: "",
     description: "",
     image: "",
     images: "",
@@ -46,9 +47,9 @@ const Section: React.FC = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const { id, name, category, rating, price, description, image, images } = product;
+    const { id, name, category, rating, price, discount, description, image, images } = product;
 
-    if (!id || !name || !category || !rating || !price || !description || !image) {
+    if (!id || !name || !category || !rating || !price || !description || !image || !discount) {
       alert("Please fill all required fields.");
       return;
     }
@@ -61,6 +62,7 @@ const Section: React.FC = () => {
         category: category.trim(),
         rating: parseFloat(rating),
         price: Number(price),
+        discount: Number(discount),
         description: description.trim(),
         image: image.trim(),
         images: images
@@ -77,6 +79,7 @@ const Section: React.FC = () => {
         category: "",
         rating: "",
         price: "",
+        discount: "",
         description: "",
         image: "",
         images: "",
@@ -127,6 +130,7 @@ const Section: React.FC = () => {
               { label: "Category", name: "category" },
               { label: "Rating", name: "rating" },
               { label: "Price", name: "price" },
+              { label: "Discount", name: "discount" },
               { label: "Main Image URL", name: "image" },
               { label: "Additional Images (comma separated URLs)", name: "images" },
             ].map((field) => (
@@ -175,6 +179,7 @@ const Section: React.FC = () => {
                   category: "",
                   rating: "",
                   price: "",
+                  discount: "",
                   description: "",
                   image: "",
                   images: "",

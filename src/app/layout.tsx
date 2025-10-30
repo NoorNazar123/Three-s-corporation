@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
+import WhatsAppChat from '@/components/WhatsAppChat';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -59,7 +60,7 @@ export default function RootLayout({
       >
         <div className="max-w-7xl mx-auto ">
           <Header />
-          <main className="pt-40">{children}</main>
+          <main className="pt-40">{children} <WhatsAppChat /></main>
           <Footer />
         </div>
       </body>
