@@ -79,11 +79,17 @@ export default function Products() {
 
   // 🧠 Filtered and Paginated Products
   const filteredProducts = useMemo(() => {
-    return products
-      .filter((p) => (category === 'All' ? true : p.category === category))
-      .filter((p) => p.name.toLowerCase().includes(search.toLowerCase()))
-      .filter((p) => p.price <= maxPrice);
-  }, [search, category, maxPrice, products]);
+  return products
+    .filter((p) =>
+      category === 'All'
+        ? true
+        : p.category.replace(/\s+/g, '').toLowerCase() ===
+          category.replace(/\s+/g, '').toLowerCase()
+    )
+    .filter((p) => p.name.toLowerCase().includes(search.toLowerCase()))
+    .filter((p) => p.price <= maxPrice);
+}, [search, category, maxPrice, products]);
+
 
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
 

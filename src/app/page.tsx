@@ -58,7 +58,7 @@ export default function Home() {
               <motion.a
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                href="tel:+923453286167"
+                href="tel:+923218945376"
                 className="flex items-center justify-center gap-2 rounded-md bg-red-600 px-6 py-3 text-white font-semibold text-xs md:text-base shadow-md transition hover:bg-red-700"
               >
                 Talk to a Power Expert

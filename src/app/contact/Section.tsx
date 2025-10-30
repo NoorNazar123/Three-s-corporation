@@ -29,7 +29,7 @@ const Section = () => {
             transition={{ delay: 0.3, duration: 0.8 }}
           >
             <a
-              href="tel:+923453286167"
+              href="tel:+923218945376"
               className="flex items-center justify-center gap-2 rounded-md bg-red-600 px-6 py-3 text-white font-semibold text-sm md:text-base shadow-md transition hover:bg-red-700"
             >
               📞 Call Now

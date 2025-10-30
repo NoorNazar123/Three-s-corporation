@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Facebook, Instagram, Linkedin, Phone, Mail, MapPin } from 'lucide-react';
+import { Facebook, Linkedin, Phone, Mail, MapPin } from 'lucide-react';
 import Image from 'next/image';
 
 const socialLinks = [
@@ -9,7 +9,6 @@ const socialLinks = [
     icon: Facebook,
     href: "https://www.facebook.com/profile.php?id=61568556226122",
   },
-  { icon: Instagram, href: "https://instagram.com" },
   { icon: Linkedin, href: "https://www.linkedin.com/in/muhammad-azam-ahmad-526a0a390/" },
   {
     icon: "/images/tiktok-icon.svg",
@@ -50,8 +49,8 @@ export default function Footer() {
 
           <div className="flex items-center gap-2 mb-2">
             <Phone className="text-red-600 w-5 h-5" />
-            <a href="tel:+923453286167" className="hover:text-red-600 transition text-sm">
-              +92 3453286167
+            <a href="tel:+923218945376" className="hover:text-red-600 transition text-sm">
+              +92 3218945376
             </a>
           </div>
 
