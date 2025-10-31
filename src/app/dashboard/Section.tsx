@@ -21,7 +21,6 @@ const Section: React.FC = () => {
     images: "",
   });
 
-  // ✅ Optional additional info
   const [additionalInfo, setAdditionalInfo] = useState({
     title: "",
     detailsDescription: "",
@@ -33,6 +32,19 @@ const Section: React.FC = () => {
   });
 
   const [loading, setLoading] = useState(false);
+
+  const categories = [
+    "All",
+    "Used Laptops",
+    "Batteries",
+    "External Hard Drives",
+    "Adapters",
+    "Storage",
+    "RAMS",
+    "Laptop Keyboards",
+    "Screens",
+    "Other Parts",
+  ];
 
   useEffect(() => {
     const adminFlag = localStorage.getItem("isAdmin");
@@ -118,8 +130,6 @@ const Section: React.FC = () => {
           ? images.split(",").map((url) => url.trim()).filter(Boolean)
           : [image.trim()],
         createdAt: serverTimestamp(),
-
-        // ✅ Optional field (only added if admin provided data)
         additionalInfo:
           Object.values(additionalInfo).some((val) => val.trim() !== "")
             ? {
@@ -139,8 +149,6 @@ const Section: React.FC = () => {
 
       await addDoc(collection(db, "products"), formattedProduct);
       alert("✅ Product added successfully!");
-
-      // reset fields
       setProduct({
         id: "",
         name: "",
@@ -208,7 +216,6 @@ const Section: React.FC = () => {
             {[
               { label: "Product ID", name: "id" },
               { label: "Product Name", name: "name" },
-              { label: "Category", name: "category" },
               { label: "Rating", name: "rating" },
               { label: "Price", name: "price" },
               { label: "Discount", name: "discount" },
@@ -232,6 +239,25 @@ const Section: React.FC = () => {
                 />
               </div>
             ))}
+
+            {/* ✅ Category Field (radio buttons only) */}
+            <div className="md:col-span-2">
+              <label className="block mb-1 font-medium">Category</label>
+              <div className="flex flex-wrap gap-3">
+                {categories.map((cat) => (
+                  <label key={cat} className="flex items-center gap-1">
+                    <input
+                      type="radio"
+                      name="category"
+                      value={cat}
+                      checked={product.category === cat}
+                      onChange={handleChange}
+                    />
+                    <span>{cat}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
           </div>
 
           <div className="mt-4">
@@ -352,7 +378,6 @@ const Section: React.FC = () => {
 };
 
 export default Section;
-
 
 
 
