@@ -18,6 +18,15 @@ interface Product {
   description: string;
   createdAt?: string;
   docId?: string;
+  additionalInfo?: {
+    title?: string;
+    detailsDescription?: string;
+    brand?: string;
+    material?: string;
+    colorOptions?: string[];
+    warrantyPeriod?: string;
+    returnPolicy?: string;
+  } | null;
 }
 
 export default function Products() {
@@ -37,9 +46,7 @@ export default function Products() {
 
         const cleanImages = Array.isArray(data.images)
           ? data.images.map((img: string) =>
-              typeof img === 'string'
-                ? img.replace(/^'+|'+$/g, '').trim()
-                : ''
+              typeof img === 'string' ? img.replace(/^'+|'+$/g, '').trim() : ''
             )
           : data.images
           ? [data.images.replace(/^'+|'+$/g, '').trim()]
@@ -57,11 +64,28 @@ export default function Products() {
           images: cleanImages,
           price: data.price ?? 0,
           description: data.description ?? 'No description available.',
-          createdAt: data.createdAt ?? '',
+          createdAt:
+            data.createdAt && data.createdAt.toDate
+              ? data.createdAt.toDate().toISOString()
+              : '',
+          additionalInfo: data.additionalInfo
+            ? {
+                title: data.additionalInfo.title ?? '',
+                detailsDescription: data.additionalInfo.detailsDescription ?? '',
+                brand: data.additionalInfo.brand ?? '',
+                material: data.additionalInfo.material ?? '',
+                colorOptions: Array.isArray(data.additionalInfo.colorOptions)
+                  ? data.additionalInfo.colorOptions
+                  : [],
+                warrantyPeriod: data.additionalInfo.warrantyPeriod ?? '',
+                returnPolicy: data.additionalInfo.returnPolicy ?? '',
+              }
+            : null,
           docId: doc.id,
         };
       });
 
+      // ✅ move this OUTSIDE the map
       setProducts(productsList);
     } catch (error) {
       console.error('❌ Error fetching products:', error);
@@ -77,19 +101,17 @@ export default function Products() {
 
   const itemsPerPage = 8;
 
-  // 🧠 Filtered and Paginated Products
   const filteredProducts = useMemo(() => {
-  return products
-    .filter((p) =>
-      category === 'All'
-        ? true
-        : p.category.replace(/\s+/g, '').toLowerCase() ===
-          category.replace(/\s+/g, '').toLowerCase()
-    )
-    .filter((p) => p.name.toLowerCase().includes(search.toLowerCase()))
-    .filter((p) => p.price <= maxPrice);
-}, [search, category, maxPrice, products]);
-
+    return products
+      .filter((p) =>
+        category === 'All'
+          ? true
+          : p.category.replace(/\s+/g, '').toLowerCase() ===
+            category.replace(/\s+/g, '').toLowerCase()
+      )
+      .filter((p) => p.name.toLowerCase().includes(search.toLowerCase()))
+      .filter((p) => p.price <= maxPrice);
+  }, [search, category, maxPrice, products]);
 
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
 
@@ -101,14 +123,11 @@ export default function Products() {
   return (
     <section id="product" className="container mx-auto mt-20 px-6">
       <div className="flex flex-col lg:flex-row gap-8">
-        {/* Sidebar */}
         <div className="w-full lg:w-1/4">
           <StoreSidebar selected={category} setSelected={setCategory} />
         </div>
 
-        {/* Main Content */}
         <div className="w-full lg:w-3/4 space-y-6">
-          {/* Search + Price Filter */}
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <input
               type="text"
@@ -134,7 +153,6 @@ export default function Products() {
             </div>
           </div>
 
-          {/* Product Grid */}
           {loading ? (
             <p className="text-center text-gray-500 py-10">Loading products...</p>
           ) : paginatedProducts.length > 0 ? (
@@ -149,7 +167,6 @@ export default function Products() {
             </p>
           )}
 
-          {/* Pagination */}
           {totalPages > 1 && (
             <Pagination
               totalPages={totalPages}
