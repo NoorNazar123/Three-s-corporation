@@ -247,7 +247,7 @@ export default function Products() {
                 <div key={product.id || product.docId} className="relative group">
                   <ProductCard product={product} />
                   {isAdmin && (
-                    <div className="flex justify-center gap-3 mt-2 opacity-0 group-hover:opacity-100 transition">
+                    <div className="flex justify-center gap-3 mt-2 transition">
                       <button
                         onClick={() => openEditModal(product)}
                         className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md text-sm"
