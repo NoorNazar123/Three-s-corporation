@@ -115,9 +115,21 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   if (!product) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0c1425] text-white">
-        Product not found.
+      <div className="py-44 flex flex-col items-center justify-center text-white text-center space-y-4">
+      <h1 className="text-3xl font-bold text-[#c60000]">Product Not Found</h1>
+      <p className="text-gray-400">
+        The product you’re looking for doesn’t exist or may have been removed.
+      </p>
+
+      <div className="flex gap-4 mt-2">
+        <a
+          href="/"
+          className="bg-[#c60000] hover:bg-[#e00000] text-white px-4 py-2 rounded-md transition-all"
+        >
+          Home
+        </a>
       </div>
+    </div>
     );
   }
 
