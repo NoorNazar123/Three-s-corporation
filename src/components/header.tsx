@@ -30,8 +30,10 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed  top-0 left-0 z-50 w-full text-slate-800 transition-all duration-300 ${
-        isSticky ? 'bg-white/80 backdrop-blur-md shadow-md' : 'bg-transparent'
+      className={`fixed  top-0 left-0 z-50 w-full text-slate-800 transition-all duration-300 ${isSticky
+  ? 'bg-[#fff7f7]/90 backdrop-blur-md shadow-md border-b border-[#f1dada]'
+  : 'bg-[#fff4f4] border-b border-[#f1dada]'
+
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-6">

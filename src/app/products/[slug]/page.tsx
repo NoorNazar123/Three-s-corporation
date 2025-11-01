@@ -99,7 +99,8 @@ async function getProductBySlug(slug: string): Promise<Product | null> {
 export async function generateMetadata({
   params,
 }: ProductPageProps): Promise<Metadata> {
-  const product = await getProductBySlug(params.slug);
+  const resolvedParams = await params;
+  const product = await getProductBySlug(resolvedParams.slug);
 
   if (!product) {
     return {
@@ -118,7 +119,8 @@ export async function generateMetadata({
 
 // 🧩 Page Component
 export default async function ProductPage({ params }: ProductPageProps) {
-  const product = await getProductBySlug(params.slug);
+  const resolvedParams = await params;
+  const product = await getProductBySlug(resolvedParams.slug);
  
   if (!product) {
     return (
