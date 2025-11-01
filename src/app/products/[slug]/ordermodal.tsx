@@ -57,7 +57,7 @@ const OrderModal: React.FC<{
 
   return (
     <div
-      className={`fixed inset-0 bg-opacity-50 z-50 flex justify-center items-center ${
+      className={`fixed inset-0 bg-[#fff4f4]/50 backdrop-blur-sm z-50 flex justify-center items-center ${
         !isOpen ? "hidden" : ""
       }`}
       onClick={onClose}
@@ -68,7 +68,7 @@ const OrderModal: React.FC<{
       >
         {!orderPlaced ? (
           <>
-            <h2 className="text-2xl font-bold mb-4">Place Your Order</h2>
+            <h2 className="text-2xl font-bold mb-4 text-red-600">Place Your Order</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label className="block">Quantity</label>
@@ -76,7 +76,7 @@ const OrderModal: React.FC<{
                   type="number"
                   value={quantity}
                   onChange={(e) => setQuantity(parseInt(e.target.value))}
-                  className="w-full p-2 border border-gray-300 rounded"
+                  className="w-full rounded-md p-3 text-gray-700 border border-gray-300 placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none"
                   min={1}
                   required
                 />
@@ -87,7 +87,7 @@ const OrderModal: React.FC<{
                   type="text"
                   value={userName}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="w-full p-2 border border-gray-300 rounded"
+                   className="w-full rounded-md p-3 text-gray-700 border border-gray-300 placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none"
                   required
                 />
               </div>
@@ -97,7 +97,7 @@ const OrderModal: React.FC<{
                   type="text"
                   value={phoneNumber}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full p-2 border border-gray-300 rounded"
+                   className="w-full rounded-md p-3 text-gray-700 border border-gray-300 placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none"
                   required
                 />
               </div>
@@ -106,7 +106,7 @@ const OrderModal: React.FC<{
                 <textarea
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
-                  className="w-full p-2 border border-gray-300 rounded"
+                   className="w-full rounded-md p-3 text-gray-700 border border-gray-300 placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none"
                   required
                 />
               </div>
@@ -116,7 +116,7 @@ const OrderModal: React.FC<{
                   type="file"
                   id="fileInput"
                   multiple
-                  className="w-full"
+                   className="w-full rounded-md p-3 text-gray-700 border border-gray-300 placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none"
                 />
               </div>
               <div className="flex gap-4">

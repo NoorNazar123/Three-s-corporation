@@ -299,9 +299,9 @@ export default function Products() {
 
       {/* ✏️ Edit Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 overflow-y-auto">
+<div className="fixed inset-0 bg-[#fff4f4]/50 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg mx-auto my-10">
-            <h2 className="text-xl font-semibold mb-4 text-center">Edit Product</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-center text-red-600">Edit Product</h2>
             <div className="space-y-3 max-h-[70vh] overflow-y-auto pr-2">
               {Object.entries({
                 name: 'Product Name',
@@ -329,7 +329,8 @@ export default function Products() {
                     onChange={(e) =>
                       setEditForm({ ...editForm, [key]: e.target.value })
                     }
-                    className="w-full border rounded-md px-3 py-2 text-sm"
+                    className="w-full rounded-md p-3 text-gray-700 border border-gray-300 placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none"
+
                   />
                 </div>
               ))}
@@ -337,13 +338,13 @@ export default function Products() {
             <div className="flex justify-end gap-3 mt-4">
               <button
                 onClick={() => setShowModal(false)}
-                className="px-4 py-2 rounded-md border"
+                className="px-4 py-2 rounded-md text-white bg-green-600 text-white hover:bg-green-700"
               >
                 Cancel
               </button>
               <button
                 onClick={handleUpdate}
-                className="px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700"
+                className="px-4 py-2 rounded-md bg-green-600 text-white hover:bg-green-700"
               >
                 Save Changes
               </button>
