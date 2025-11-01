@@ -56,17 +56,6 @@ export default function Products() {
     if (saved === 'true') setIsAdmin(true);
   }, []);
 
-  const handleAdminLogin = () => {
-    const pass = prompt('Enter admin password:');
-    if (pass === process.env.NEXT_PUBLIC_ADMIN_KEY) {
-      setIsAdmin(true);
-      localStorage.setItem('isAdmin', 'true');
-      alert('✅ Admin mode activated');
-    } else {
-      alert('❌ Incorrect password');
-    }
-  };
-
   const fetchProducts = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, 'products'));
@@ -265,17 +254,6 @@ export default function Products() {
               </span>
             </div>
           </div>
-
-          {!isAdmin && (
-            <div className="flex justify-end mb-3">
-              <button
-                onClick={handleAdminLogin}
-                className="bg-gray-700 text-white px-3 py-1 rounded-md hover:bg-gray-800"
-              >
-                Admin Login
-              </button>
-            </div>
-          )}
 
           {loading ? (
             <p className="text-center text-gray-500 py-10">Loading products...</p>
