@@ -1,5 +1,5 @@
-import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
 
 export async function POST(request: Request) {
   try {
@@ -19,7 +19,7 @@ export async function POST(request: Request) {
     }
 
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      service: 'gmail',
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
@@ -33,24 +33,27 @@ export async function POST(request: Request) {
       html: `
         <h2>New Submission</h2>
         <p><strong>Name:</strong> ${fields.userName || fields.fullName || `${fields.firstName} ${fields.lastName}`}</p>
-        <p><strong>Email:</strong> ${fields.email || "N/A"}</p>
-        <p><strong>Phone:</strong> ${fields.phoneNumber || fields.phone || "N/A"}</p>
-        <p><strong>Product/Service:</strong> ${fields.variant || fields.service || "N/A"}</p>
-        <p><strong>Quantity:</strong> ${fields.quantity || "N/A"}</p>
-        <p><strong>Address:</strong> ${fields.address || fields.country || "N/A"}</p>
-        <p><strong>Message:</strong> ${fields.message || "N/A"}</p>
-        <p><strong>Files:</strong> ${attachments.length > 0 ? attachments.map(a => a.filename).join(", ") : "No files attached"}</p>
+        <p><strong>Email:</strong> ${fields.email || 'N/A'}</p>
+        <p><strong>Phone:</strong> ${fields.phoneNumber || fields.phone || 'N/A'}</p>
+        <p><strong>Product/Service:</strong> ${fields.variant || fields.service || 'N/A'}</p>
+        <p><strong>Quantity:</strong> ${fields.quantity || 'N/A'}</p>
+        <p><strong>Address:</strong> ${fields.address || fields.country || 'N/A'}</p>
+        <p><strong>Message:</strong> ${fields.message || 'N/A'}</p>
+        <p><strong>Files:</strong> ${attachments.length > 0 ? attachments.map((a) => a.filename).join(', ') : 'No files attached'}</p>
       `,
       attachments, // will be empty if no files
     };
 
     await transporter.sendMail(mailOptions);
 
-    return NextResponse.json({ success: true, message: "Form submitted successfully" });
+    return NextResponse.json({ success: true, message: 'Form submitted successfully' });
   } catch (error) {
-    console.error("Form submission error:", error);
+    console.error('Form submission error:', error);
     return NextResponse.json(
-      { error: "Failed to process form submission", details: error instanceof Error ? error.message : "Unknown error" },
+      {
+        error: 'Failed to process form submission',
+        details: error instanceof Error ? error.message : 'Unknown error',
+      },
       { status: 500 }
     );
   }

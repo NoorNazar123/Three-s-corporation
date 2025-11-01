@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { db } from "@/lib/firebase";
-import { collection, getDocs, DocumentData } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
+import { db } from '@/lib/firebase';
+import { collection, getDocs, DocumentData } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react';
 
 interface Product {
   id: string;
@@ -23,7 +23,7 @@ const ProductsSection: React.FC = () => {
 
   const fetchProducts = async () => {
     try {
-      const querySnapshot = await getDocs(collection(db, "products"));
+      const querySnapshot = await getDocs(collection(db, 'products'));
 
       const productsList: Product[] = querySnapshot.docs.map((doc) => {
         const data = doc.data() as DocumentData;
@@ -31,35 +31,30 @@ const ProductsSection: React.FC = () => {
         // 🧹 Clean image URLs (remove extra quotes if present)
         const cleanImages = Array.isArray(data.images)
           ? data.images.map((img: string) =>
-              typeof img === "string"
-                ? img.replace(/^'+|'+$/g, "").trim()
-                : ""
+              typeof img === 'string' ? img.replace(/^'+|'+$/g, '').trim() : ''
             )
           : data.images
-          ? [data.images.replace(/^'+|'+$/g, "").trim()]
-          : [];
+            ? [data.images.replace(/^'+|'+$/g, '').trim()]
+            : [];
 
         return {
-          id: data.id ?? "",
-          name: data.name ?? "Unnamed Product",
-          category: data.category ?? "Uncategorized",
+          id: data.id ?? '',
+          name: data.name ?? 'Unnamed Product',
+          category: data.category ?? 'Uncategorized',
           rating: data.rating ?? 0,
-          image:
-            typeof data.image === "string"
-              ? data.image.replace(/^'+|'+$/g, "").trim()
-              : "",
+          image: typeof data.image === 'string' ? data.image.replace(/^'+|'+$/g, '').trim() : '',
           images: cleanImages,
           price: data.price ?? 0,
-          description: data.description ?? "No description available.",
-          createdAt: data.createdAt ?? "",
+          description: data.description ?? 'No description available.',
+          createdAt: data.createdAt ?? '',
           docId: doc.id,
         };
       });
 
       setProducts(productsList);
     } catch (error) {
-      console.error("❌ Error fetching products:", error);
-      alert("Failed to load products. Please try again later.");
+      console.error('❌ Error fetching products:', error);
+      alert('Failed to load products. Please try again later.');
     } finally {
       setLoading(false);
     }
@@ -86,19 +81,15 @@ const ProductsSection: React.FC = () => {
             >
               {/* Main image */}
               <img
-                src={product.image || (product.images[0] ?? "/placeholder.png")}
+                src={product.image || (product.images[0] ?? '/placeholder.png')}
                 alt={product.name}
                 className="w-full h-48 object-cover rounded-md mb-4"
               />
 
               {/* Product info */}
               <h3 className="text-xl font-semibold">{product.name}</h3>
-              <p className="text-gray-500 text-sm mb-1">
-                Category: {product.category}
-              </p>
-              <p className="text-gray-600 mb-2 line-clamp-2">
-                {product.description}
-              </p>
+              <p className="text-gray-500 text-sm mb-1">Category: {product.category}</p>
+              <p className="text-gray-600 mb-2 line-clamp-2">{product.description}</p>
 
               {/* Extra images */}
               {product.images.length > 1 && (

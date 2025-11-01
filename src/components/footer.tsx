@@ -7,16 +7,18 @@ import Image from 'next/image';
 const socialLinks = [
   {
     icon: Facebook,
-    href: "https://www.facebook.com/profile.php?id=61568556226122",
+    href: 'https://www.facebook.com/profile.php?id=61568556226122',
   },
-  { icon: Linkedin, href: "https://www.linkedin.com/in/muhammad-azam-ahmad-526a0a390/" },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/muhammad-azam-ahmad-526a0a390/' },
   {
-    icon: "/images/tiktok-icon.svg",
-    href: "https://www.tiktok.com/@3s.cop.laptops.an?_t=ZS-90yQN8zl7WJ&_r=1",
+    icon: '/images/tiktok-icon.svg',
+    href: 'https://www.tiktok.com/@3s.cop.laptops.an?_t=ZS-90yQN8zl7WJ&_r=1',
   },
 ];
 
-const message = encodeURIComponent("Hi! I found your website and wanted to connect with the developer — are you available to chat?");
+const message = encodeURIComponent(
+  'Hi! I found your website and wanted to connect with the developer — are you available to chat?'
+);
 
 export default function Footer() {
   return (
@@ -56,10 +58,7 @@ export default function Footer() {
 
           <div className="flex items-center gap-2 mb-2">
             <Mail className="text-red-600 w-5 h-5" />
-            <a
-              href="mailto:3scorpor@gmail.com"
-              className="hover:text-red-600 transition text-sm"
-            >
+            <a href="mailto:3scorpor@gmail.com" className="hover:text-red-600 transition text-sm">
               3scorpor@gmail.com
             </a>
           </div>
@@ -82,26 +81,26 @@ export default function Footer() {
           <h4 className="text-lg font-semibold text-gray-800 mb-3">Follow Us</h4>
           <div className="flex items-center gap-4">
             {socialLinks.map(({ icon: Icon, href }, i) => (
-        <Link
-          key={i}
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-2 rounded-full border border-gray-300 hover:bg-red-600 hover:text-white transition-all"
-        >
-          {typeof Icon === "string" ? (
-            <Image
-              src={Icon}
-              alt="TikTok"
-              width={20}
-              height={20}
-              className="object-contain"
-            />
-          ) : (
-            <Icon className="w-5 h-5" />
-          )}
-        </Link>
-      ))}
+              <Link
+                key={i}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full border border-gray-300 hover:bg-red-600 hover:text-white transition-all"
+              >
+                {typeof Icon === 'string' ? (
+                  <Image
+                    src={Icon}
+                    alt="TikTok"
+                    width={20}
+                    height={20}
+                    className="object-contain"
+                  />
+                ) : (
+                  <Icon className="w-5 h-5" />
+                )}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
@@ -111,24 +110,23 @@ export default function Footer() {
         © {new Date().getFullYear()} 3S Corporation. All rights reserved.
       </div>
 
-  {/* Developer Credit */}
-{/* Developer Credit */}
-<div className="text-center text-sm text-gray-500 mt-4">
-  Designed & Developed by{" "}
-  <a
-    href={`https://wa.me/923178813001?text=${message}`}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-red-600 hover:underline"
-  >
-    Muhammad Noor e Nazar
-  </a>{" "}
-  —{" "}
-  <a href="mailto:noorenazar.prog@gmail.com" className="hover:underline">
-    noorenazar.prog@gmail.com
-  </a>
-</div>
-
+      {/* Developer Credit */}
+      {/* Developer Credit */}
+      <div className="text-center text-sm text-gray-500 mt-4">
+        Designed & Developed by{' '}
+        <a
+          href={`https://wa.me/923178813001?text=${message}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-red-600 hover:underline"
+        >
+          Muhammad Noor e Nazar
+        </a>{' '}
+        —{' '}
+        <a href="mailto:noorenazar.prog@gmail.com" className="hover:underline">
+          noorenazar.prog@gmail.com
+        </a>
+      </div>
     </footer>
   );
 }

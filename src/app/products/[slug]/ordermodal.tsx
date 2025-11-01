@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const OrderModal: React.FC<{
   isOpen: boolean;
@@ -7,39 +7,39 @@ const OrderModal: React.FC<{
   variant: string;
 }> = ({ isOpen, onClose, productId, variant }) => {
   const [quantity, setQuantity] = useState(1);
-  const [userName, setUsername] = useState("");
-  const [phoneNumber, setPhone] = useState("");
-  const [address, setAddress] = useState("");
+  const [userName, setUsername] = useState('');
+  const [phoneNumber, setPhone] = useState('');
+  const [address, setAddress] = useState('');
   const [orderPlaced, setOrderPlaced] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append("productId", String(productId));
-    formData.append("variant", variant);
-    formData.append("quantity", String(quantity));
-    formData.append("userName", userName);
-    formData.append("phoneNumber", phoneNumber);
-    formData.append("address", address);
+    formData.append('productId', String(productId));
+    formData.append('variant', variant);
+    formData.append('quantity', String(quantity));
+    formData.append('userName', userName);
+    formData.append('phoneNumber', phoneNumber);
+    formData.append('address', address);
 
     // Optional files
-    const filesInput = document.getElementById("fileInput") as HTMLInputElement;
+    const filesInput = document.getElementById('fileInput') as HTMLInputElement;
     if (filesInput?.files?.length) {
       for (const file of Array.from(filesInput.files)) {
-        formData.append("files", file);
+        formData.append('files', file);
       }
     }
 
     try {
-      const response = await fetch("/api/orderConfirm", {
-        method: "POST",
+      const response = await fetch('/api/orderConfirm', {
+        method: 'POST',
         body: formData, // important: no JSON header
       });
 
       if (response.ok) {
         const result = await response.json();
-        console.log("Order submitted:", result);
+        console.log('Order submitted:', result);
         setOrderPlaced(true);
 
         setTimeout(() => {
@@ -47,18 +47,18 @@ const OrderModal: React.FC<{
           onClose();
         }, 1000);
       } else {
-        alert("Failed to place your order. Please try again.");
+        alert('Failed to place your order. Please try again.');
       }
     } catch (err) {
       console.error(err);
-      alert("An error occurred. Please try again.");
+      alert('An error occurred. Please try again.');
     }
   };
 
   return (
     <div
       className={`fixed inset-0 bg-[#fff4f4]/50 backdrop-blur-sm z-50 flex justify-center items-center ${
-        !isOpen ? "hidden" : ""
+        !isOpen ? 'hidden' : ''
       }`}
       onClick={onClose}
     >
@@ -87,7 +87,7 @@ const OrderModal: React.FC<{
                   type="text"
                   value={userName}
                   onChange={(e) => setUsername(e.target.value)}
-                   className="w-full rounded-md p-3 text-gray-700 border border-gray-300 placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none"
+                  className="w-full rounded-md p-3 text-gray-700 border border-gray-300 placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none"
                   required
                 />
               </div>
@@ -97,7 +97,7 @@ const OrderModal: React.FC<{
                   type="text"
                   value={phoneNumber}
                   onChange={(e) => setPhone(e.target.value)}
-                   className="w-full rounded-md p-3 text-gray-700 border border-gray-300 placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none"
+                  className="w-full rounded-md p-3 text-gray-700 border border-gray-300 placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none"
                   required
                 />
               </div>
@@ -106,7 +106,7 @@ const OrderModal: React.FC<{
                 <textarea
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
-                   className="w-full rounded-md p-3 text-gray-700 border border-gray-300 placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none"
+                  className="w-full rounded-md p-3 text-gray-700 border border-gray-300 placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none"
                   required
                 />
               </div>
@@ -116,7 +116,7 @@ const OrderModal: React.FC<{
                   type="file"
                   id="fileInput"
                   multiple
-                   className="w-full rounded-md p-3 text-gray-700 border border-gray-300 placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none"
+                  className="w-full rounded-md p-3 text-gray-700 border border-gray-300 placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none"
                 />
               </div>
               <div className="flex gap-4">

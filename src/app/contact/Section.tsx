@@ -1,11 +1,11 @@
-"use client"
+'use client';
 
-import React from 'react'
+import React from 'react';
 import { motion } from 'framer-motion';
 
 const Section = () => {
   return (
-     <section className="overflow-hidden">
+    <section className="overflow-hidden">
       <div className="container mx-auto px-6 flex justify-center min-h-[60vh]">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -18,8 +18,8 @@ const Section = () => {
           </h1>
 
           <p className="mb-8 max-w-[800px] text-center text-gray-600 text-base">
-            Have a question, need a quote, or want help choosing the right product?  
-            Our support team is ready to assist you with personalized guidance and quick responses.
+            Have a question, need a quote, or want help choosing the right product? Our support team
+            is ready to assist you with personalized guidance and quick responses.
           </p>
 
           <motion.div
@@ -44,7 +44,7 @@ const Section = () => {
         </motion.div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Section
+export default Section;

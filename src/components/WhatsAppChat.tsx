@@ -1,10 +1,12 @@
 'use client';
 
-import Link from "next/link";
-import { MessageCircle } from "lucide-react";
+import Link from 'next/link';
+import { MessageCircle } from 'lucide-react';
 
 export default function WhatsAppChat() {
-  const message = encodeURIComponent(`Hi! I'm interested in the product. Can you tell me more about it?`);
+  const message = encodeURIComponent(
+    `Hi! I'm interested in the product. Can you tell me more about it?`
+  );
   const href = `https://wa.me/923218945376?text=${message}`;
 
   return (

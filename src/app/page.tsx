@@ -7,7 +7,6 @@ import Products from '@/components/product';
 
 const images = ['/images/3s.webp', '/images/img1.jpeg', '/images/img3.jpeg'];
 
-
 export default function Home() {
   const [current, setCurrent] = useState(0);
 

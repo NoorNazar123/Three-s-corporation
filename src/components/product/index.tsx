@@ -4,14 +4,7 @@ import { useState, useMemo, useEffect } from 'react';
 import StoreSidebar from './StoreSidebar';
 import ProductCard from './ProductCard';
 import Pagination from './Pagination';
-import {
-  collection,
-  DocumentData,
-  getDocs,
-  doc,
-  deleteDoc,
-  updateDoc,
-} from 'firebase/firestore';
+import { collection, DocumentData, getDocs, doc, deleteDoc, updateDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 
 interface Product {
@@ -66,25 +59,20 @@ export default function Products() {
               typeof img === 'string' ? img.replace(/^'+|'+$/g, '').trim() : ''
             )
           : data.images
-          ? [data.images.replace(/^'+|'+$/g, '').trim()]
-          : [];
+            ? [data.images.replace(/^'+|'+$/g, '').trim()]
+            : [];
 
         return {
           id: data.id ?? '',
           name: data.name ?? 'Unnamed Product',
           category: data.category ?? 'Uncategorized',
           rating: data.rating ?? 0,
-          image:
-            typeof data.image === 'string'
-              ? data.image.replace(/^'+|'+$/g, '').trim()
-              : '',
+          image: typeof data.image === 'string' ? data.image.replace(/^'+|'+$/g, '').trim() : '',
           images: cleanImages,
           price: data.price ?? 0,
           description: data.description ?? 'No description available.',
           createdAt:
-            data.createdAt && data.createdAt.toDate
-              ? data.createdAt.toDate().toISOString()
-              : '',
+            data.createdAt && data.createdAt.toDate ? data.createdAt.toDate().toISOString() : '',
           additionalInfo: data.additionalInfo
             ? {
                 title: data.additionalInfo.title ?? '',
@@ -190,9 +178,7 @@ export default function Products() {
       await updateDoc(doc(db, 'products', editProduct.docId), updatedData);
 
       setProducts((prev) =>
-        prev.map((p) =>
-          p.docId === editProduct.docId ? { ...p, ...updatedData } : p
-        )
+        prev.map((p) => (p.docId === editProduct.docId ? { ...p, ...updatedData } : p))
       );
 
       alert('✅ Product updated successfully!');
@@ -249,9 +235,7 @@ export default function Products() {
                 onChange={(e) => setMaxPrice(Number(e.target.value))}
                 className="accent-red-600 cursor-pointer"
               />
-              <span className="text-sm font-semibold text-gray-800">
-                Rs {maxPrice}
-              </span>
+              <span className="text-sm font-semibold text-gray-800">Rs {maxPrice}</span>
             </div>
           </div>
 
@@ -266,7 +250,7 @@ export default function Products() {
                     <div className="flex justify-center gap-3 mt-2 opacity-0 group-hover:opacity-100 transition">
                       <button
                         onClick={() => openEditModal(product)}
-                        className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-md text-sm"
+                        className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md text-sm"
                       >
                         Edit
                       </button>
@@ -282,9 +266,7 @@ export default function Products() {
               ))}
             </div>
           ) : (
-            <p className="text-gray-500 text-center col-span-full py-10">
-              No products found 😔
-            </p>
+            <p className="text-gray-500 text-center col-span-full py-10">No products found 😔</p>
           )}
 
           {totalPages > 1 && (
@@ -299,7 +281,7 @@ export default function Products() {
 
       {/* ✏️ Edit Modal */}
       {showModal && (
-<div className="fixed inset-0 bg-[#fff4f4]/50 backdrop-blur-sm flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-[#fff4f4]/50 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg mx-auto my-10">
             <h2 className="text-2xl font-semibold mb-4 text-center text-red-600">Edit Product</h2>
             <div className="space-y-3 max-h-[70vh] overflow-y-auto pr-2">
@@ -320,17 +302,12 @@ export default function Products() {
                 returnPolicy: 'Return Policy',
               }).map(([key, label]) => (
                 <div key={key}>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    {label}
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
                   <input
                     type="text"
                     value={editForm[key] ?? ''}
-                    onChange={(e) =>
-                      setEditForm({ ...editForm, [key]: e.target.value })
-                    }
+                    onChange={(e) => setEditForm({ ...editForm, [key]: e.target.value })}
                     className="w-full rounded-md p-3 text-gray-700 border border-gray-300 placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none"
-
                   />
                 </div>
               ))}
@@ -355,4 +332,3 @@ export default function Products() {
     </section>
   );
 }
- 

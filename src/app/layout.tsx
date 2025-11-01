@@ -17,32 +17,29 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Home | 3S Corporation", 
-    template: "%s | 3S Corporation",
+    default: 'Home | 3S Corporation',
+    template: '%s | 3S Corporation',
   },
   description:
-    "Shop premium laptop batteries, chargers, and accessories at 3S Corporation. Trusted quality, fast delivery, and top-rated service in Pakistan.",
+    'Shop premium laptop batteries, chargers, and accessories at 3S Corporation. Trusted quality, fast delivery, and top-rated service in Pakistan.',
   openGraph: {
-    title: "3S Corporation",
+    title: '3S Corporation',
     description:
-      "Reliable laptop batteries, chargers, and accessories available with free delivery across Pakistan.",
-    url: "https://3scorporation.pk",
-    siteName: "3S Corporation",
-    locale: "en_PK",
-    type: "website",
+      'Reliable laptop batteries, chargers, and accessories available with free delivery across Pakistan.',
+    url: 'https://3scorporation.pk',
+    siteName: '3S Corporation',
+    locale: 'en_PK',
+    type: 'website',
   },
   twitter: {
-    card: "summary_large_image",
-    title: "3S Corporation",
-    description:
-      "Premium laptop accessories — batteries, chargers, and more for every brand.",
+    card: 'summary_large_image',
+    title: '3S Corporation',
+    description: 'Premium laptop accessories — batteries, chargers, and more for every brand.',
   },
   icons: {
-    icon: "/icon.png",
+    icon: '/icon.png',
   },
 };
-
-
 
 export default function RootLayout({
   children,
@@ -60,7 +57,9 @@ export default function RootLayout({
       >
         <div className="max-w-7xl mx-auto ">
           <Header />
-          <main className="pt-40">{children} <WhatsAppChat /></main>
+          <main className="pt-40">
+            {children} <WhatsAppChat />
+          </main>
           <Footer />
         </div>
       </body>

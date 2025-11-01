@@ -1,6 +1,6 @@
 export const productsData = [
   {
-    id: "dell-laptop-battery-65wh",
+    id: 'dell-laptop-battery-65wh',
     name: 'Dell Laptop Battery 65Wh',
     category: 'Batteries',
     price: 9500,
@@ -10,7 +10,7 @@ export const productsData = [
     rating: 4.5,
   },
   {
-    id: "hp-adapter-45w-type-c",
+    id: 'hp-adapter-45w-type-c',
     name: 'HP Adapter 45W Type-C',
     category: 'Chargers',
     price: 7500,
@@ -20,7 +20,7 @@ export const productsData = [
     rating: 4.3,
   },
   {
-    id: "lenovo-battery-48wh",
+    id: 'lenovo-battery-48wh',
     name: 'Lenovo Battery 48Wh',
     category: 'Batteries',
     price: 8700,
@@ -30,7 +30,7 @@ export const productsData = [
     rating: 4.2,
   },
   {
-    id: "cooling-pad-pro-rgb",
+    id: 'cooling-pad-pro-rgb',
     name: 'Cooling Pad Pro RGB',
     category: 'Accessories',
     price: 4500,
@@ -40,7 +40,7 @@ export const productsData = [
     rating: 4.7,
   },
   {
-    id: "usb-c-multiport-hub",
+    id: 'usb-c-multiport-hub',
     name: 'USB-C Multiport Hub',
     category: 'Accessories',
     price: 5600,
@@ -50,7 +50,7 @@ export const productsData = [
     rating: 4.6,
   },
   {
-    id: "acer-charger-65w",
+    id: 'acer-charger-65w',
     name: 'Acer Charger 65W',
     category: 'Chargers',
     price: 6800,
@@ -60,7 +60,7 @@ export const productsData = [
     rating: 4.4,
   },
   {
-    id: "asus-laptop-battery-56wh",
+    id: 'asus-laptop-battery-56wh',
     name: 'Asus Laptop Battery 56Wh',
     category: 'Batteries',
     price: 8800,
@@ -70,7 +70,7 @@ export const productsData = [
     rating: 4.5,
   },
   {
-    id: "macbook-pro-charger-60w-magsafe",
+    id: 'macbook-pro-charger-60w-magsafe',
     name: 'MacBook Pro Charger 60W Magsafe',
     category: 'Chargers',
     price: 11000,
@@ -80,7 +80,7 @@ export const productsData = [
     rating: 4.8,
   },
   {
-    id: "laptop-stand-adjustable-aluminum",
+    id: 'laptop-stand-adjustable-aluminum',
     name: 'Laptop Stand Adjustable Aluminum',
     category: 'Accessories',
     price: 3900,
@@ -90,7 +90,7 @@ export const productsData = [
     rating: 4.4,
   },
   {
-    id: "hp-battery-41wh",
+    id: 'hp-battery-41wh',
     name: 'HP Battery 41Wh',
     category: 'Batteries',
     price: 7600,

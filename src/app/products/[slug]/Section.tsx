@@ -98,9 +98,7 @@ const Section: React.FC<SectionProps> = ({ product }) => {
           </p>
 
           <div className="flex flex-wrap items-center gap-3 mb-6">
-            <span className="text-xl sm:text-2xl text-red-500 line-through">
-              {actualPrice} Rs
-            </span>
+            <span className="text-xl sm:text-2xl text-red-500 line-through">{actualPrice} Rs</span>
             <span className="text-2xl">|</span>
             <span className="text-xl sm:text-2xl font-semibold text-green-600">
               {discountedPrice} Rs
@@ -108,8 +106,7 @@ const Section: React.FC<SectionProps> = ({ product }) => {
           </div>
 
           <p className="text-lg mb-4">
-            Variant:{' '}
-            <span className="text-gray-600 font-semibold">{watchvariant}</span>
+            Variant: <span className="text-gray-600 font-semibold">{watchvariant}</span>
           </p>
 
           <div className="text-lg mb-8">Free delivery all over Pakistan 🚚</div>
@@ -161,9 +158,7 @@ const Section: React.FC<SectionProps> = ({ product }) => {
               product.additionalInfo.colorOptions.length > 0 && (
                 <div>
                   <h4 className="font-semibold text-gray-800">Available Colors</h4>
-                  <p className="text-gray-600">
-                    {product.additionalInfo.colorOptions.join(', ')}
-                  </p>
+                  <p className="text-gray-600">{product.additionalInfo.colorOptions.join(', ')}</p>
                 </div>
               )}
 

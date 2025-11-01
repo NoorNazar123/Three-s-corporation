@@ -30,10 +30,10 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed  top-0 left-0 z-50 w-full text-slate-800 transition-all duration-300 ${isSticky
-  ? 'bg-[#fff7f7]/90 backdrop-blur-md shadow-md border-b border-[#f1dada]'
-  : 'bg-[#fff4f4] border-b border-[#f1dada]'
-
+      className={`fixed  top-0 left-0 z-50 w-full text-slate-800 transition-all duration-300 ${
+        isSticky
+          ? 'bg-[#fff7f7]/90 backdrop-blur-md shadow-md border-b border-[#f1dada]'
+          : 'bg-[#fff4f4] border-b border-[#f1dada]'
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-6">
@@ -111,19 +111,19 @@ export default function Header() {
           }`}
         >
           <div className="flex items-center justify-between px-6 py-4 border-b">
-                <Link
-          href="/"
-          className="font-bold flex flex-col leading-[30px] text-center tracking-wide text-red-700 hover:scale-105 transition-transform duration-300"
-        >
-          <Image
-            src="/images/logo.png"
-            alt="3S Corporation Logo"
-            width={1200}
-            height={1200}
-            className="object-contain w-[110px] h-auto"
-            priority
-          />
-        </Link>
+            <Link
+              href="/"
+              className="font-bold flex flex-col leading-[30px] text-center tracking-wide text-red-700 hover:scale-105 transition-transform duration-300"
+            >
+              <Image
+                src="/images/logo.png"
+                alt="3S Corporation Logo"
+                width={1200}
+                height={1200}
+                className="object-contain w-[110px] h-auto"
+                priority
+              />
+            </Link>
             <button
               onClick={() => setMenuOpen(false)}
               className="p-2 rounded-md hover:bg-gray-100 transition"
