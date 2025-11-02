@@ -20,13 +20,13 @@ export default function Home() {
   return (
     <>
       <section className="overflow-hidden">
-        <div className="container mx-auto px-6 flex flex-wrap items-center">
+        <div className="container mx-auto px-6 flex flex-wrap-reverse items-center">
           {/* Text Section */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="w-full lg:w-1/2 mb-12 lg:mb-0 md:-mt-8"
+            className="w-full lg:w-1/2 mt-12 mb-12 lg:mb-0 md:-mt-8"
           >
             <h1 className="mb-5 text-3xl md:text-4xl font-extrabold leading-tight text-slate-800 lg:text-[42px]">
               Power Up Your Devices with{' '}
