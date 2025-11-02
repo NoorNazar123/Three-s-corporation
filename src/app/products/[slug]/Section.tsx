@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import OrderModal from './ordermodal';
+import { formatDescription } from '@/lib/logicHandler';
 
 export interface AdditionalInfo {
   title?: string;
@@ -134,9 +135,9 @@ const Section: React.FC<SectionProps> = ({ product }) => {
           )}
 
           {product.additionalInfo.detailsDescription && (
-            <p className="text-gray-700 mb-8 leading-relaxed">
-              {product.additionalInfo.detailsDescription}
-            </p>
+            <div className="text-gray-700 mb-8 leading-relaxed">
+              {formatDescription(product.additionalInfo.detailsDescription)}
+            </div>
           )}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
