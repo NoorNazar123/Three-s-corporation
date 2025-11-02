@@ -3,6 +3,7 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { db } from '@/lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { useRouter } from 'next/navigation';
 
 const Section: React.FC = () => {
   const [authorized, setAuthorized] = useState(false);
@@ -30,6 +31,8 @@ const Section: React.FC = () => {
     warrantyPeriod: '',
     returnPolicy: '',
   });
+
+   const router = useRouter()
 
   const [loading, setLoading] = useState(false);
 
@@ -147,6 +150,7 @@ const Section: React.FC = () => {
 
       await addDoc(collection(db, 'products'), formattedProduct);
       alert('✅ Product added successfully!');
+      router.push("/#product");
       setProduct({
         id: '',
         name: '',
@@ -267,7 +271,6 @@ const Section: React.FC = () => {
             />
           </div>
 
-          {/* ✅ Optional Additional Info Section */}
           <div className="mt-8 border-t pt-6">
             <h3 className="text-lg font-semibold text-gray-700 mb-2">
               Additional Product Info (optional)
@@ -313,7 +316,7 @@ const Section: React.FC = () => {
               type="submit"
               disabled={loading}
               className={`border border-gray-300 py-2 px-6 rounded ${
-                loading ? 'bg-gray-400 cursor-not-allowed' : 'hover:bg-green-600 hover:text-white'
+                loading ? 'bg-red-600 cursor-not-allowed text-white' : 'hover:bg-green-600 hover:text-white'
               }`}
             >
               {loading ? 'Saving...' : 'Save Product'}

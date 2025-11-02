@@ -20,9 +20,16 @@ export default function ProductCard({ product }: { product: any }) {
       <Link href={`/products/${product.id}`}>
         <div className="w-full flex flex-col items-center">
           <Image
-            src={product.image}
-            alt={product.name}
-            width={200}
+            src={
+              product?.image && product.image.startsWith('http')
+                ? product.image
+                : '/placeholder.png'
+            }
+            alt={
+              product?.image && product.image.startsWith("http")
+                ? product?.name || "Product image"
+                : "Invalid or missing image"
+            } width={200}
             height={200}
             className="rounded-md object-cover h-[150px] w-full"
           />
