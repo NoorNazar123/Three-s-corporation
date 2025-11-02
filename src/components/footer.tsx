@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Facebook, Linkedin, Phone, Mail, MapPin } from 'lucide-react';
+import { Facebook, Linkedin, Phone, Mail, MapPin, Youtube } from 'lucide-react';
 import Image from 'next/image';
 
 const socialLinks = [
@@ -13,6 +13,10 @@ const socialLinks = [
   {
     icon: '/images/tiktok-icon.svg',
     href: 'https://www.tiktok.com/@3s.cop.laptops.an?_t=ZS-90yQN8zl7WJ&_r=1',
+  },
+    {
+    icon: Youtube,
+    href: 'https://www.youtube.com/@3scorpor',
   },
 ];
 
