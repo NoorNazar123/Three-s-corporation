@@ -149,7 +149,6 @@ const Section: React.FC = () => {
       };
 
       await addDoc(collection(db, 'products'), formattedProduct);
-      alert('✅ Product added successfully!');
       router.push("/#product");
       setProduct({
         id: '',
