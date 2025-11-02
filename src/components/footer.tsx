@@ -66,12 +66,12 @@ export default function Footer() {
           <div className="flex items-center gap-2 mb-2">
             <MapPin className="text-red-600 w-5 h-5" />
             <a
-              href="https://goo.gl/maps/abc123" // replace with actual Google Maps link
+              href="https://goo.gl/maps/abc123"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-red-600 transition text-sm"
             >
-              Plot #15, Industrial Area, Karachi, Pakistan
+              GC-13, Ground Floor, Techno city, Hasrat Mohani Road, Karachi.
             </a>
           </div>
         </div>
