@@ -45,7 +45,7 @@ export default function Home() {
               transition={{ delay: 0.4, duration: 0.7 }}
               className="mb-5 text-base font-medium text-slate-700"
             >
-              ⚡ Power up your laptop — call now or email us for the perfect match 🎉🚀
+              Power up your laptop — call now or email us for the perfect match
             </motion.p>
 
             <motion.div
