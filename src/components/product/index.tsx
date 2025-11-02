@@ -38,12 +38,10 @@ export default function Products() {
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
 
-  // Modal states
   const [showModal, setShowModal] = useState(false);
   const [editProduct, setEditProduct] = useState<Product | null>(null);
   const [editForm, setEditForm] = useState<any>({});
 
-  // ✅ Admin check via prompt
   useEffect(() => {
     const saved = localStorage.getItem('isAdmin');
     if (saved === 'true') setIsAdmin(true);

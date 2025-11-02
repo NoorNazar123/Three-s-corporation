@@ -23,7 +23,6 @@ const OrderModal: React.FC<{
     formData.append('phoneNumber', phoneNumber);
     formData.append('address', address);
 
-    // Optional files
     const filesInput = document.getElementById('fileInput') as HTMLInputElement;
     if (filesInput?.files?.length) {
       for (const file of Array.from(filesInput.files)) {
@@ -34,12 +33,11 @@ const OrderModal: React.FC<{
     try {
       const response = await fetch('/api/orderConfirm', {
         method: 'POST',
-        body: formData, // important: no JSON header
+        body: formData,
       });
 
       if (response.ok) {
         const result = await response.json();
-        console.log('Order submitted:', result);
         setOrderPlaced(true);
 
         setTimeout(() => {

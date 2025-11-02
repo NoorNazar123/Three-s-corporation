@@ -179,7 +179,6 @@ const Section: React.FC<SectionProps> = ({ product }) => {
         </div>
       )}
 
-      {/* Order Modal */}
       <OrderModal
         variant={watchvariant}
         isOpen={isModalOpen}

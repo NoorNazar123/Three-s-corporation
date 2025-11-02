@@ -16,8 +16,6 @@ export default function StoreSidebar({ selected, setSelected }: SidebarProps) {
     'Screens',
     'Other Parts',
   ];
-
-  console.log('cate123', selected);
   return (
     <aside className="p-6 bg-white rounded-lg shadow-md">
       <h3 className="text-xl font-semibold mb-4 text-gray-800">Categories</h3>

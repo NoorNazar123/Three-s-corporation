@@ -24,28 +24,22 @@ export default function Footer() {
   return (
     <footer className="bg-gradient-to-br from-white via-gray-100 to-blue-100 text-gray-700 py-10 mt-20 border-t border-gray-200">
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
-        {/* Logo & About */}
         <div className="flex flex-col items-center md:items-start">
           <Link
             href="/"
             className="font-bold w-[200px] h-40 -mt-8 flex flex-col leading-[30px] tracking-wide text-red-700 hover:scale-105 transition-transform duration-300"
           >
             <Image
-              src="/images/logo.png" // replace with your actual logo path
+              src="/images/logo.png"
               alt="3S Corporation Logo"
-              width={1000} // adjust as needed
+              width={1000} 
               height={1000}
               className="object-contain"
               priority
             />
           </Link>
-          {/* <p className="mt-4 text-sm text-gray-600 max-w-xs text-center md:text-left">
-            Powering your devices with high-quality laptop batteries and
-            accessories you can trust. Reliable, affordable, and built to last.
-          </p> */}
         </div>
 
-        {/* Contact Info */}
         <div className="flex flex-col items-center md:items-start">
           <h4 className="text-lg font-semibold text-gray-800 mb-3">Contact Us</h4>
 
@@ -76,7 +70,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Social Links */}
         <div className="flex flex-col items-center md:items-start">
           <h4 className="text-lg font-semibold text-gray-800 mb-3">Follow Us</h4>
           <div className="flex items-center gap-4">
@@ -105,13 +98,10 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Text */}
       <div className="text-center text-sm text-gray-500 mt-8 border-t border-gray-200 pt-4">
         © {new Date().getFullYear()} 3S Corporation. All rights reserved.
       </div>
 
-      {/* Developer Credit */}
-      {/* Developer Credit */}
       <div className="text-center text-sm text-gray-500 mt-4">
         Designed & Developed by{' '}
         <a

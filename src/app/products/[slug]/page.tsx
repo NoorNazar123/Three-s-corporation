@@ -2,8 +2,6 @@ import { db } from '@/lib/firebase';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import Section from './Section';
 import type { Metadata } from 'next';
-
-// 🧩 Product interface
 interface AdditionalInfo {
   title?: string;
   detailsDescription?: string;
@@ -33,7 +31,6 @@ interface ProductPageProps {
   params: { slug: string };
 }
 
-// 🔍 Fetch product data from Firestore
 async function getProductBySlug(slug: string): Promise<Product | null> {
   try {
     const q = query(collection(db, 'products'), where('id', '==', slug));
@@ -44,7 +41,6 @@ async function getProductBySlug(slug: string): Promise<Product | null> {
     const docSnap = querySnapshot.docs[0];
     const data = docSnap.data();
 
-    // 🖼 Clean images
     const cleanImages = Array.isArray(data.images)
       ? data.images.map((img: string) =>
           typeof img === 'string' ? img.replace(/^'+|'+$/g, '').trim() : ''
@@ -53,11 +49,9 @@ async function getProductBySlug(slug: string): Promise<Product | null> {
         ? [data.images.replace(/^'+|'+$/g, '').trim()]
         : [];
 
-    // 🕒 Convert Firestore Timestamp
     const createdAt =
       data.createdAt && data.createdAt.toDate ? data.createdAt.toDate().toISOString() : '';
 
-    // ✅ Build product object
     return {
       id: data.id ?? slug,
       name: data.name ?? 'Unnamed Product',
@@ -90,7 +84,6 @@ async function getProductBySlug(slug: string): Promise<Product | null> {
   }
 }
 
-// 🧠 SEO Metadata
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const resolvedParams = await params;
   const product = await getProductBySlug(resolvedParams.slug);
@@ -108,7 +101,6 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   };
 }
 
-// 🧩 Page Component
 export default async function ProductPage({ params }: ProductPageProps) {
   const resolvedParams = await params;
   const product = await getProductBySlug(resolvedParams.slug);
@@ -133,6 +125,5 @@ export default async function ProductPage({ params }: ProductPageProps) {
     );
   }
 
-  // @ts-ignore (Section expects correct prop)
   return <Section product={product} />;
 }

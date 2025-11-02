@@ -28,7 +28,6 @@ const ProductsSection: React.FC = () => {
       const productsList: Product[] = querySnapshot.docs.map((doc) => {
         const data = doc.data() as DocumentData;
 
-        // 🧹 Clean image URLs (remove extra quotes if present)
         const cleanImages = Array.isArray(data.images)
           ? data.images.map((img: string) =>
               typeof img === 'string' ? img.replace(/^'+|'+$/g, '').trim() : ''

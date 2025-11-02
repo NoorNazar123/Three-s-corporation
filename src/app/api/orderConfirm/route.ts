@@ -41,7 +41,7 @@ export async function POST(request: Request) {
         <p><strong>Message:</strong> ${fields.message || 'N/A'}</p>
         <p><strong>Files:</strong> ${attachments.length > 0 ? attachments.map((a) => a.filename).join(', ') : 'No files attached'}</p>
       `,
-      attachments, // will be empty if no files
+      attachments,
     };
 
     await transporter.sendMail(mailOptions);

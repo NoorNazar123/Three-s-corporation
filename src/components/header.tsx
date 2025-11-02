@@ -9,18 +9,16 @@ import { usePathname } from 'next/navigation';
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false); // ✅ added
+  const [isAdmin, setIsAdmin] = useState(false); 
 
-  const pathname = usePathname(); // ✅ get current path
+  const pathname = usePathname(); 
 
-  // Sticky navbar effect
   useEffect(() => {
     const handleScroll = () => setIsSticky(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // ✅ Check admin on load
   useEffect(() => {
     const adminFlag = localStorage.getItem('isAdmin');
     if (adminFlag === 'true') setIsAdmin(true);
@@ -37,7 +35,6 @@ export default function Header() {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-6">
-        {/* Logo */}
         <Link
           href="/"
           className="font-bold flex flex-col leading-[30px] text-center tracking-wide text-red-700 hover:scale-105 transition-transform duration-300"
@@ -52,11 +49,9 @@ export default function Header() {
           />
         </Link>
 
-        {/* Desktop Nav */}
         <nav className="hidden space-x-8 md:flex">
           {navItems
             .filter((item) => item !== 'Dashboard' || isAdmin)
-            // only include 'dashboard' if isAdmin is true
             .map((item) => {
               const path =
                 item === 'Home'
@@ -86,8 +81,6 @@ export default function Header() {
               );
             })}
         </nav>
-
-        {/* Mobile Menu Button */}
         <button
           onClick={() => setMenuOpen(true)}
           className="p-2 rounded-md hover:bg-gray-100 md:hidden transition"
@@ -96,7 +89,6 @@ export default function Header() {
           <Menu size={26} />
         </button>
 
-        {/* Overlay */}
         {menuOpen && (
           <div
             onClick={() => setMenuOpen(false)}
@@ -104,7 +96,6 @@ export default function Header() {
           />
         )}
 
-        {/* Side Drawer */}
         <div
           className={`fixed top-0 right-0 z-50 h-full w-3/4 max-w-[300px] bg-white shadow-lg transform transition-transform duration-300 ease-in-out md:hidden ${
             menuOpen ? 'translate-x-0' : 'translate-x-full'
@@ -133,7 +124,7 @@ export default function Header() {
             </button>
           </div>
 
-          {/* ✅ Mobile Nav */}
+       
           <nav className="flex flex-col space-y-6 p-6 text-gray-700 md:hidden">
             {navItems
               .filter((item) => item !== 'Dashboard' || isAdmin)
