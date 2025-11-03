@@ -100,8 +100,10 @@ export default function Header() {
           className={`fixed top-0 right-0 z-50 h-full w-3/4 max-w-[300px] bg-white shadow-lg transform transition-transform duration-300 ease-in-out md:hidden ${
             menuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
+          style={{ backgroundColor: 'rgba(255,255,255,1)' }}
+
         >
-          <div className="flex items-center justify-between px-6 py-4 border-b">
+          <div className="flex items-center justify-between px-6 py-4 border-b bg-white">
             <Link
               href="/"
               className="font-bold flex flex-col leading-[30px] text-center tracking-wide text-red-700 hover:scale-105 transition-transform duration-300"
@@ -125,7 +127,7 @@ export default function Header() {
           </div>
 
        
-          <nav className="flex flex-col space-y-6 p-6 text-gray-700 md:hidden">
+          <nav className="flex flex-col space-y-6 p-6 text-gray-700 bg-white md:hidden">
             {navItems
               .filter((item) => item !== 'Dashboard' || isAdmin)
               .map((item) => {
