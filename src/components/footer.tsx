@@ -69,7 +69,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="hover:text-red-600 transition text-sm"
             >
-              GC-13, Ground Floor, Techno city, Hasrat Mohani Road, Karachi.
+              GC-13, Ground Floor, Techno City, Hasrat Mohani Road, Karachi.
             </a>
           </div>
         </div>
