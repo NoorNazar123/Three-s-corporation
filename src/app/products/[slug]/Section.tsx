@@ -107,7 +107,7 @@ const Section: React.FC<SectionProps> = ({ product }) => {
           </div>
 
           <p className="text-lg mb-4">
-            Variant: <span className="text-gray-600 font-semibold">{watchvariant}</span>
+            Warranty: <span className="text-gray-600 font-semibold">{product?.additionalInfo?.warrantyPeriod}</span>
           </p>
 
           <div className="text-lg mb-8">Free delivery all over Pakistan 🚚</div>
